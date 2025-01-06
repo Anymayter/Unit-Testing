@@ -1,5 +1,5 @@
 # Unit-Testing
-1. Mô Tả Dự Án
+# 1. Mô Tả Dự Án
 StringUtils là một dự án Java đơn giản cung cấp các phương thức xử lý chuỗi thông dụng như:
 - Kiểm tra chuỗi đối xứng (Palindrome)
 - Đảo ngược chuỗi
@@ -7,12 +7,13 @@ StringUtils là một dự án Java đơn giản cung cấp các phương thức
 - Viết hoa chữ cái đầu tiên
 Dự án bao gồm JUnit 5 để kiểm thử các phương thức và đảm bảo tính đúng đắn của mã nguồn.
 
-2. Công Nghệ Sử Dụng
+# 2. Công Nghệ Sử Dụng
+
 Java 11+
 JUnit 5
 Maven (hoặc Gradle, nếu cần)
 
-3. Mã Nguồn
+# 3. Mã Nguồn
    
 StringUtils.java
 
@@ -93,11 +94,11 @@ public class StringUtilsTest {
 
 ```
 
-Result
+# 4.Result
 
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
-Author
+# 5.Author
 
 Nguyễn Đức Toàn
 
