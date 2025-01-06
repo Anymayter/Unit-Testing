@@ -16,37 +16,46 @@ Maven (hoặc Gradle, nếu cần)
    
 StringUtils.java
 
-public class StringUtils {
+package com.example.demo;
 
-    public boolean isPalindrome(String str) {
-        if (str == null) return false;
-        String reversed = new StringBuilder(str).reverse().toString();
-        return str.equals(reversed);
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringUtilsTest {
+
+    StringUtils stringUtils = new StringUtils();
+
+    @Test
+    public void testIsPalindrome() {
+        assertTrue(stringUtils.isPalindrome("madam"));
+        assertFalse(stringUtils.isPalindrome("hello"));
+        assertFalse(stringUtils.isPalindrome(null));
     }
 
-    public String reverse(String str) {
-        if (str == null) return null;
-        return new StringBuilder(str).reverse().toString();
+    @Test
+    public void testReverse() {
+        assertEquals("olleh", stringUtils.reverse("hello"));
+        assertEquals("", stringUtils.reverse(""));
+        assertNull(stringUtils.reverse(null));
     }
 
-    public int countVowels(String str) {
-        if (str == null) return 0;
-        int count = 0;
-        String vowels = "aeiouAEIOU";
-        for (char c : str.toCharArray()) {
-            if (vowels.indexOf(c) != -1) {
-                count++;
-            }
-        }
-        return count;
+    @Test
+    public void testCountVowels() {
+        assertEquals(2, stringUtils.countVowels("hello"));
+        assertEquals(5, stringUtils.countVowels("education"));
+        assertEquals(0, stringUtils.countVowels(""));
+        assertEquals(0, stringUtils.countVowels(null));
     }
 
-    public String capitalize(String str) {
-        if (str == null || str.isEmpty()) return str;
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    @Test
+    public void testCapitalize() {
+        assertEquals("Hello", stringUtils.capitalize("hello"));
+        assertEquals("Hello world", stringUtils.capitalize("hello world"));
+        assertEquals("", stringUtils.capitalize(""));
+        assertNull(stringUtils.capitalize(null));
     }
 }
-
 StringUtilsTest.java
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
