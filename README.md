@@ -5,6 +5,7 @@ StringUtils là một dự án Java đơn giản cung cấp các phương thức
 - Đảo ngược chuỗi
 - Đếm số nguyên âm
 - Viết hoa chữ cái đầu tiên
+  
 Dự án bao gồm JUnit 5 để kiểm thử các phương thức và đảm bảo tính đúng đắn của mã nguồn.
 
 # 2. Công Nghệ Sử Dụng
@@ -123,7 +124,11 @@ public class StringUtilsTest {
 
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
-# 5. Sinh viên
+# 7. Mã nguồn Chatgpt
+
+https://chatgpt.com/share/677c0efd-72b0-800b-8fa7-2d87258b496c
+
+# 8. Sinh viên
 
 Nguyễn Đức Toàn
 
