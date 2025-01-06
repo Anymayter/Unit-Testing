@@ -30,7 +30,7 @@ public class StringUtils {
         if (str == null) return null;
         return new StringBuilder(str).reverse().toString();
     }
-   # Đếm số nguyên âm
+   // Đếm số nguyên âm
     public int countVowels(String str) {
         if (str == null) return 0;
         int count = 0;
@@ -42,7 +42,7 @@ public class StringUtils {
         }
         return count;
     }
-   # Viết hoa chữ cái đầu tiên
+   // Viết hoa chữ cái đầu tiên
     public String capitalize(String str) {
         if (str == null || str.isEmpty()) return str;
         return str.substring(0, 1).toUpperCase() + str.substring(1);
