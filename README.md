@@ -9,9 +9,9 @@ Dự án bao gồm JUnit 5 để kiểm thử các phương thức và đảm b�
 
 # 2. Công Nghệ Sử Dụng
 
-Java 11+
-JUnit 5
-Maven (hoặc Gradle, nếu cần)
+- Java 11+
+- JUnit 5
+- Maven (hoặc Gradle, nếu cần)
 
 # 3. Mã Nguồn
    
@@ -94,7 +94,18 @@ public class StringUtilsTest {
 
 ```
 
-# 4.Result
+# 4. Dependency for Pom.xml
+
+```java
+<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+```
+
+# 4. Result
 
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
@@ -104,4 +115,3 @@ Nguyễn Đức Toàn
 
 
 
-Unit Test with Java
