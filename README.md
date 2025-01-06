@@ -17,39 +17,41 @@ Maven (hoặc Gradle, nếu cần)
 StringUtils.java
 
 ```java
-public class TestDemo {
-	@Before
-	public void before(){
-		System.out.println("Before");
-	}
-	
-	@After
-	public void after(){
-		System.out.println("After");
-	}
-	
-	@Test
-	public void test1(){
-		System.out.println("Test 1 run");
-	}
-	
-	@Test
-	public void test2(){
-		System.out.println("Test 2 run");
-	}
-	
-	@BeforeClass
-	public static void beforeClass(){
-		System.out.println("BeforeClass");
-	}
-	
-	@AfterClass
-	public static void afterClass(){
-		System.out.println("AfterClass");
-	}
+public class StringUtils {
+
+    public boolean isPalindrome(String str) {
+        if (str == null) return false;
+        String reversed = new StringBuilder(str).reverse().toString();
+        return str.equals(reversed);
+    }
+
+    public String reverse(String str) {
+        if (str == null) return null;
+        return new StringBuilder(str).reverse().toString();
+    }
+
+    public int countVowels(String str) {
+        if (str == null) return 0;
+        int count = 0;
+        String vowels = "aeiouAEIOU";
+        for (char c : str.toCharArray()) {
+            if (vowels.indexOf(c) != -1) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String capitalize(String str) {
+        if (str == null || str.isEmpty()) return str;
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
 }
 
+
 StringUtilsTest.java
+
+```java
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
