@@ -48,6 +48,7 @@ public class StringUtils {
     }
 }
 
+```
 
 StringUtilsTest.java
 
@@ -89,6 +90,8 @@ public class StringUtilsTest {
         assertNull(stringUtils.capitalize(null));
     }
 }
+
+```
 
 Result
 
