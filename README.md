@@ -85,6 +85,7 @@ public class StringUtilsTest {
 }
 
 Result
+
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
 Author
