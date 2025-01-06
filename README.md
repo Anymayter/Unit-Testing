@@ -94,7 +94,7 @@ public class StringUtilsTest {
 
 ```
 
-## ⚙️ Các Phương Thức Chính Trong StringUtils
+# 4. Các Phương Thức Chính Trong StringUtils
 
 | **Tên Phương Thức**                        | **Mô Tả**                                | **Tham Số Đầu Vào**          | **Giá Trị Trả Về**         | **Ví Dụ**                     |
 |--------------------------------------------|------------------------------------------|-----------------------------|----------------------------|--------------------------------|
@@ -108,7 +108,7 @@ public class StringUtilsTest {
 | `int length(String str)`                   | Trả về độ dài của chuỗi.                 | `String str`               | Độ dài chuỗi               | `"hello"` → `5`                |
 
 
-# 4. Dependency for Pom.xml
+# 5. Dependency cho Pom.xml
 
 ```java
 <dependency>
@@ -119,11 +119,11 @@ public class StringUtilsTest {
 </dependency>
 ```
 
-# 4. Result
+# 6. Result
 
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
-# 5.Author
+# 5. Sinh viên
 
 Nguyễn Đức Toàn
 
