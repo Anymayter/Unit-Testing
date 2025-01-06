@@ -19,18 +19,18 @@ StringUtils.java
 
 ```java
 public class StringUtils {
-
+   // Kiểm tra chuỗi đối xứng (Palindrome)
     public boolean isPalindrome(String str) {
         if (str == null) return false;
         String reversed = new StringBuilder(str).reverse().toString();
         return str.equals(reversed);
     }
-
+   // Đảo ngược chuỗi
     public String reverse(String str) {
         if (str == null) return null;
         return new StringBuilder(str).reverse().toString();
     }
-
+   # Đếm số nguyên âm
     public int countVowels(String str) {
         if (str == null) return 0;
         int count = 0;
@@ -42,7 +42,7 @@ public class StringUtils {
         }
         return count;
     }
-
+   # Viết hoa chữ cái đầu tiên
     public String capitalize(String str) {
         if (str == null || str.isEmpty()) return str;
         return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -60,21 +60,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StringUtilsTest {
 
     StringUtils stringUtils = new StringUtils();
-
+   // Kiểm tra chuỗi đối xứng (Palindrome)
     @Test
     public void testIsPalindrome() {
         assertTrue(stringUtils.isPalindrome("madam"));
         assertFalse(stringUtils.isPalindrome("hello"));
         assertFalse(stringUtils.isPalindrome(null));
     }
-
+   // Đảo ngược chuỗi
     @Test
     public void testReverse() {
         assertEquals("olleh", stringUtils.reverse("hello"));
         assertEquals("", stringUtils.reverse(""));
         assertNull(stringUtils.reverse(null));
     }
-
+   //  Đếm số nguyên âm
     @Test
     public void testCountVowels() {
         assertEquals(2, stringUtils.countVowels("hello"));
@@ -82,7 +82,7 @@ public class StringUtilsTest {
         assertEquals(0, stringUtils.countVowels(""));
         assertEquals(0, stringUtils.countVowels(null));
     }
-
+    // Viết hoa chữ cái đầu tiên
     @Test
     public void testCapitalize() {
         assertEquals("Hello", stringUtils.capitalize("hello"));
@@ -94,6 +94,20 @@ public class StringUtilsTest {
 
 ```
 
+## ⚙️ Các Phương Thức Chính Trong StringUtils
+
+| **Tên Phương Thức**                        | **Mô Tả**                                | **Tham Số Đầu Vào**          | **Giá Trị Trả Về**         | **Ví Dụ**                     |
+|--------------------------------------------|------------------------------------------|-----------------------------|----------------------------|--------------------------------|
+| `boolean isPalindrome(String str)`         | Kiểm tra chuỗi có phải là Palindrome.    | `String str`               | `true` hoặc `false`         | `"madam"` → `true`             |
+| `String reverse(String str)`               | Đảo ngược chuỗi đầu vào.                 | `String str`               | Chuỗi đảo ngược            | `"hello"` → `"olleh"`          |
+| `int countVowels(String str)`              | Đếm số nguyên âm trong chuỗi.            | `String str`               | Số lượng nguyên âm          | `"hello"` → `2`               |
+| `String capitalize(String str)`            | Viết hoa chữ cái đầu tiên của chuỗi.     | `String str`               | Chuỗi viết hoa             | `"hello"` → `"Hello"`          |
+| `boolean isEmpty(String str)`              | Kiểm tra chuỗi có rỗng hay không.        | `String str`               | `true` hoặc `false`         | `""` → `true`                 |
+| `boolean containsSubstring(String str, String subStr)` | Kiểm tra chuỗi con có tồn tại trong chuỗi chính. | `String str`, `String subStr` | `true` hoặc `false` | `"hello", "ll"` → `true` |
+| `String trim(String str)`                  | Loại bỏ khoảng trắng đầu và cuối chuỗi.  | `String str`               | Chuỗi sau khi loại bỏ khoảng trắng | `"  hello  "` → `"hello"` |
+| `int length(String str)`                   | Trả về độ dài của chuỗi.                 | `String str`               | Độ dài chuỗi               | `"hello"` → `5`                |
+
+
 # 4. Dependency for Pom.xml
 
 ```java
@@ -102,7 +116,7 @@ public class StringUtilsTest {
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
-        </dependency>
+</dependency>
 ```
 
 # 4. Result
