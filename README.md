@@ -119,7 +119,7 @@ public class StringUtilsTest {
 </dependency>
 ```
 
-# 6. Result
+# 6. Kết quả Test
 
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
