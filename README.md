@@ -196,6 +196,22 @@ class StringUtilsTest {
         String expected = new StringBuilder(input).reverse().toString();
         assertEquals(expected, StringUtils.reverse(input));
     }
+
+    @Test
+void testCapitalize_multipleWords() {
+    assertEquals("Hello World", StringUtils.capitalize("hello world"));
+}
+
+@Test
+void testCapitalize_specialCharacters() {
+    assertEquals("@Hello", StringUtils.capitalize("@hello"));
+}
+
+@Test
+void testCapitalize_mixedCaseInput() {
+    assertEquals("Hello World", StringUtils.capitalize("HeLLo WoRLd"));
+}
+
 }
 
 ```
