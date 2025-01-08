@@ -100,13 +100,13 @@ class StringUtilsTest {
     
     @Test
     void testIsPalindrome_ValidPalindrome() {
-        assertTrue(StringUtils.isPalindrome("madam"));
+        assertEquals(StringUtils.isPalindrome("madam"));
     }
     
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "a", "@#&^"})
     void testIsPalindrome_EdgeCases(String input) {
-        assertFalse(StringUtils.isPalindrome(input));
+        assertEquals(StringUtils.isPalindrome(input));
     }
     
     @Test
@@ -172,7 +172,7 @@ void testCapitalize_EmptyString() {
     @Test
 void testIsPalindrome_LongString() {
     String longString = "a".repeat(1000);
-    assertTrue(StringUtils.isPalindrome(longString));
+    assertEquals(StringUtils.isPalindrome(longString));
 }
 
     @Test
