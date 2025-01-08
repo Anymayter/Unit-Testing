@@ -182,6 +182,14 @@ void testIsPalindrome_LongString() {
         assertEquals(expected, StringUtils.reverse(longString));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"¡Hola!", "你好", "😊", "❤️", "🚀"})
+    void testReverse_SpecialCharacters(String input) {
+    String expected = new StringBuilder(input).reverse().toString();
+    assertEquals(expected, StringUtils.reverse(input));
+}
+
+
 
 }
 
