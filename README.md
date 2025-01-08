@@ -58,13 +58,15 @@ public class StringUtils {
      * @return the number of vowels
      */
     public static int countVowels(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException("Input cannot be null");
-        }
-        return (int) input.toLowerCase().chars()
-                .filter(c -> "aeiou".indexOf(c) != -1)
-                .count();
+    if (input == null) {
+        throw new IllegalArgumentException("Input cannot be null");
     }
+    Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+    return (int) input.toLowerCase().chars()
+                      .filter(c -> vowels.contains((char) c))
+                      .count();
+}
+
     
     /**
      * Capitalizes the first letter of the given string.
@@ -72,10 +74,13 @@ public class StringUtils {
      * @return the capitalized string
      */
     public static String capitalize(String input) {
-    if (input == null || input.isEmpty()) {
-        return input;  // Trả về chuỗi rỗng hoặc null mà không cần thay đổi
+    if (input == null) {
+        throw new IllegalArgumentException("Input cannot be null");
     }
-    return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+    if (input.isEmpty()) {
+        return input; // Trả về chuỗi rỗng thay vì ném ngoại lệ
+    }
+    return input.substring(0, 1).toUpperCase() + input.substring(1);
 }
 
 }
