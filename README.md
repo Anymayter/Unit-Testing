@@ -102,84 +102,84 @@ import static org.junit.jupiter.api.Assertions.*;
 class StringUtilsTest {
     
     @Test
-    void testIsPalindrome_ValidPalindrome() {
+    void testIsPalindrome_validPalindrome() {
         assertEquals(StringUtils.isPalindrome("madam"));
     }
     
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "a", "@#&^"})
-    void testIsPalindrome_EdgeCases(String input) {
+    void testIsPalindrome_edgeCases(String input) {
         assertEquals(StringUtils.isPalindrome(input));
     }
     
     @Test
-    void testIsPalindrome_NullInput() {
+    void testIsPalindrome_nullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.isPalindrome(null));
     }
     
     @Test
-    void testReverse_ValidInput() {
+    void testReverse_validInput() {
         assertEquals("cba", StringUtils.reverse("abc"));
     }
     
     @Test
-    void testReverse_NullInput() {
+    void testReverse_nullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.reverse(null));
     }
     
     @Test
-    void testCountVowels_ValidInput() {
+    void testCountVowels_validInput() {
         assertEquals(2, StringUtils.countVowels("hello"));
     }
     
     @Test
-    void testCountVowels_NullInput() {
+    void testCountVowels_nullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.countVowels(null));
     }
     
     @Test
-    void testCapitalize_ValidInput() {
+    void testCapitalize_validInput() {
         assertEquals("Hello", StringUtils.capitalize("hello"));
     }
     
     @Test
-    void testCapitalize_NullInput() {
+    void testCapitalize_nullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.capitalize(null));
     }
 
     @Test
-void testCapitalize_EmptyString() {
+void testCapitalize_emptyString() {
     assertEquals("", StringUtils.capitalize(""));
 }
 
     @Test
-    void testCapitalize_AlreadyCapitalized() {
+    void testCapitalize_alreadyCapitalized() {
         assertEquals("Hello", StringUtils.capitalize("Hello"));
     }
     
     @Test
-    void testReverse_SpecialCharacters() {
+    void testReverse_specialCharacters() {
         assertEquals("!@#", StringUtils.reverse("#@!"));
     }
     
     @Test
-    void testCountVowels_EmptyString() {
+    void testCountVowels_emptyString() {
         assertEquals(0, StringUtils.countVowels(""));
     }
 
     @Test
-    void testCountVowels_SpecialCharacters() {
+    void testCountVowels_specialCharacters() {
         assertEquals(0, StringUtils.countVowels("@#$%^"));
     }
 
     @Test
-void testIsPalindrome_LongString() {
+void testIsPalindrome_longString() {
     String longString = "a".repeat(1000);
     assertEquals(StringUtils.isPalindrome(longString));
 }
 
     @Test
-    void testReverse_LongString() {
+    void testReverse_longString() {
         String longString = "abc".repeat(1000);
         String expected = "cba".repeat(1000);
         assertEquals(expected, StringUtils.reverse(longString));
@@ -187,7 +187,7 @@ void testIsPalindrome_LongString() {
 
     @ParameterizedTest
     @ValueSource(strings = {"¡Hola!", "你好", "😊", "❤️", "🚀"})
-    void testReverse_SpecialCharacters(String input) {
+    void testReverse_specialCharacters(String input) {
     String expected = new StringBuilder(input).reverse().toString();
     assertEquals(expected, StringUtils.reverse(input));
 }
