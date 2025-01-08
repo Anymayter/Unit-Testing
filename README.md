@@ -72,9 +72,12 @@ public class StringUtils {
      * @return the capitalized string
      */
     public static String capitalize(String input) {
-        if (input == null || input.isEmpty()) {
-    return input;  // Trả về chuỗi rỗng thay vì ném ngoại lệ
-  }
+    if (input == null || input.isEmpty()) {
+        return input;  // Trả về chuỗi rỗng hoặc null mà không cần thay đổi
+    }
+    return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+}
+
 }
 
 
