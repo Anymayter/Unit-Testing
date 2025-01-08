@@ -20,18 +20,13 @@ StringUtils.java
 
 ```java
 // src/main/java/com/anymayter/utils/StringUtils.java
-package com.anymayter.utils;
 
-/**
- * Utility class for common string operations.
- */
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
+
 public class StringUtils {
     
-    /**
-     * Checks if a given string is a palindrome.
-     * @param input the string to check
-     * @return true if the string is a palindrome, false otherwise
-     */
     public static boolean isPalindrome(String input) {
         if (input == null) {
             throw new IllegalArgumentException("Input cannot be null");
@@ -40,11 +35,6 @@ public class StringUtils {
         return clean.equals(new StringBuilder(clean).reverse().toString());
     }
     
-    /**
-     * Reverses the given string.
-     * @param input the string to reverse
-     * @return the reversed string
-     */
     public static String reverse(String input) {
         if (input == null) {
             throw new IllegalArgumentException("Input cannot be null");
@@ -52,38 +42,24 @@ public class StringUtils {
         return new StringBuilder(input).reverse().toString();
     }
     
-    /**
-     * Counts the number of vowels in the given string.
-     * @param input the string to check
-     * @return the number of vowels
-     */
     public static int countVowels(String input) {
-    if (input == null) {
-        throw new IllegalArgumentException("Input cannot be null");
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+        return (int) input.toLowerCase().chars()
+                          .filter(c -> vowels.contains((char) c))
+                          .count();
     }
-    Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
-    return (int) input.toLowerCase().chars()
-                      .filter(c -> vowels.contains((char) c))
-                      .count();
-}
-
     
-    /**
-     * Capitalizes the first letter of the given string.
-     * @param input the string to capitalize
-     * @return the capitalized string
-     */
     public static String capitalize(String input) {
-    if (input == null) {
-        throw new IllegalArgumentException("Input cannot be null");
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be null or empty");
+        }
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
-    if (input.isEmpty()) {
-        return input; // Trả về chuỗi rỗng thay vì ném ngoại lệ
-    }
-    return input.substring(0, 1).toUpperCase() + input.substring(1);
 }
 
-}
 
 
 ```
