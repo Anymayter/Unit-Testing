@@ -19,77 +19,131 @@ Dự án bao gồm JUnit 5 để kiểm thử các phương thức và đảm b�
 StringUtils.java
 
 ```java
+// src/main/java/com/anymayter/utils/StringUtils.java
+package com.anymayter.utils;
+
+/**
+ * Utility class for common string operations.
+ */
 public class StringUtils {
-   // Kiểm tra chuỗi đối xứng (Palindrome)
-    public boolean isPalindrome(String str) {
-        if (str == null) return false;
-        String reversed = new StringBuilder(str).reverse().toString();
-        return str.equals(reversed);
-    }
-   // Đảo ngược chuỗi
-    public String reverse(String str) {
-        if (str == null) return null;
-        return new StringBuilder(str).reverse().toString();
-    }
-   // Đếm số nguyên âm
-    public int countVowels(String str) {
-        if (str == null) return 0;
-        int count = 0;
-        String vowels = "aeiouAEIOU";
-        for (char c : str.toCharArray()) {
-            if (vowels.indexOf(c) != -1) {
-                count++;
-            }
+    
+    /**
+     * Checks if a given string is a palindrome.
+     * @param input the string to check
+     * @return true if the string is a palindrome, false otherwise
+     */
+    public static boolean isPalindrome(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
         }
-        return count;
+        String clean = input.replaceAll("\\s+", "").toLowerCase();
+        return clean.equals(new StringBuilder(clean).reverse().toString());
     }
-   // Viết hoa chữ cái đầu tiên
-    public String capitalize(String str) {
-        if (str == null || str.isEmpty()) return str;
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    
+    /**
+     * Reverses the given string.
+     * @param input the string to reverse
+     * @return the reversed string
+     */
+    public static String reverse(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        return new StringBuilder(input).reverse().toString();
+    }
+    
+    /**
+     * Counts the number of vowels in the given string.
+     * @param input the string to check
+     * @return the number of vowels
+     */
+    public static int countVowels(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        return (int) input.toLowerCase().chars()
+                .filter(c -> "aeiou".indexOf(c) != -1)
+                .count();
+    }
+    
+    /**
+     * Capitalizes the first letter of the given string.
+     * @param input the string to capitalize
+     * @return the capitalized string
+     */
+    public static String capitalize(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be null or empty");
+        }
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
 }
+
 
 ```
 
 StringUtilsTest.java
 
 ```java
+
+// src/test/java/com/anymayter/utils/StringUtilsTest.java
+package com.anymayter.utils;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StringUtilsTest {
-
-    StringUtils stringUtils = new StringUtils();
-   // Kiểm tra chuỗi đối xứng (Palindrome)
+/**
+ * Unit tests for StringUtils class.
+ */
+class StringUtilsTest {
+    
     @Test
-    public void testIsPalindrome() {
-        assertTrue(stringUtils.isPalindrome("madam"));
-        assertFalse(stringUtils.isPalindrome("hello"));
-        assertFalse(stringUtils.isPalindrome(null));
+    void testIsPalindrome_ValidPalindrome() {
+        assertTrue(StringUtils.isPalindrome("madam"));
     }
-   // Đảo ngược chuỗi
-    @Test
-    public void testReverse() {
-        assertEquals("olleh", stringUtils.reverse("hello"));
-        assertEquals("", stringUtils.reverse(""));
-        assertNull(stringUtils.reverse(null));
+    
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "a", "@#&^"})
+    void testIsPalindrome_EdgeCases(String input) {
+        assertFalse(StringUtils.isPalindrome(input));
     }
-   //  Đếm số nguyên âm
+    
     @Test
-    public void testCountVowels() {
-        assertEquals(2, stringUtils.countVowels("hello"));
-        assertEquals(5, stringUtils.countVowels("education"));
-        assertEquals(0, stringUtils.countVowels(""));
-        assertEquals(0, stringUtils.countVowels(null));
+    void testIsPalindrome_NullInput() {
+        assertThrows(IllegalArgumentException.class, () -> StringUtils.isPalindrome(null));
     }
-    // Viết hoa chữ cái đầu tiên
+    
     @Test
-    public void testCapitalize() {
-        assertEquals("Hello", stringUtils.capitalize("hello"));
-        assertEquals("Hello world", stringUtils.capitalize("hello world"));
-        assertEquals("", stringUtils.capitalize(""));
-        assertNull(stringUtils.capitalize(null));
+    void testReverse_ValidInput() {
+        assertEquals("cba", StringUtils.reverse("abc"));
+    }
+    
+    @Test
+    void testReverse_NullInput() {
+        assertThrows(IllegalArgumentException.class, () -> StringUtils.reverse(null));
+    }
+    
+    @Test
+    void testCountVowels_ValidInput() {
+        assertEquals(2, StringUtils.countVowels("hello"));
+    }
+    
+    @Test
+    void testCountVowels_NullInput() {
+        assertThrows(IllegalArgumentException.class, () -> StringUtils.countVowels(null));
+    }
+    
+    @Test
+    void testCapitalize_ValidInput() {
+        assertEquals("Hello", StringUtils.capitalize("hello"));
+    }
+    
+    @Test
+    void testCapitalize_NullInput() {
+        assertThrows(IllegalArgumentException.class, () -> StringUtils.capitalize(null));
     }
 }
 
@@ -120,15 +174,82 @@ public class StringUtilsTest {
 </dependency>
 ```
 
-# 6. Kết quả Test
+# 6. Tích hợp Jacoco để theo dõi độ bao phủ mã
+
+```java
+// pom.xml (JaCoCo Integration)
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+```
+
+# 7. CI/CD với GitHub Actions
+
+```java
+// .github/workflows/test.yml
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Build with Maven
+      run: mvn clean verify
+    - name: Generate JaCoCo Report
+      run: mvn jacoco:report
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: jacoco-report
+        path: target/site/jacoco
+```
+
+
+# 8. Kết quả Test
 
 ![image](https://github.com/user-attachments/assets/ca6c4a17-bd6c-4e02-a7d0-0ae8cd9f725d)
 
-# 7. Mã nguồn Chatgpt
+# 9. Mã nguồn Chatgpt
 
 https://chatgpt.com/share/677c0efd-72b0-800b-8fa7-2d87258b496c
 
-# 8. Sinh viên
+# 10. Sinh viên
 
 Nguyễn Đức Toàn
 
