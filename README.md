@@ -108,13 +108,13 @@ class StringUtilsTest {
     
     @Test
     void testIsPalindrome_validPalindrome() {
-        assertEquals(StringUtils.isPalindrome("madam"));
+        assertTrue(StringUtils.isPalindrome("madam"));
     }
     
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "a", "@#&^"})
     void testIsPalindrome_edgeCases(String input) {
-        assertEquals(StringUtils.isPalindrome(input));
+        assertTrue(StringUtils.isPalindrome(input));
     }
     
     @Test
@@ -131,12 +131,27 @@ class StringUtilsTest {
     void testReverse_nullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.reverse(null));
     }
+
+    @Test
+    void testReverse_specialCharacters() {
+        assertEquals("!@#", StringUtils.reverse("#@!"));
+    }
     
     @Test
     void testCountVowels_validInput() {
         assertEquals(2, StringUtils.countVowels("hello"));
     }
-    
+
+    @Test
+    void testCountVowels_emptyString() {
+        assertEquals(0, StringUtils.countVowels(""));
+    }
+
+    @Test
+    void testCountVowels_specialCharacters() {
+        assertEquals(0, StringUtils.countVowels("@#$%^"));
+    }
+
     @Test
     void testCountVowels_nullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.countVowels(null));
@@ -153,35 +168,20 @@ class StringUtilsTest {
     }
 
     @Test
-void testCapitalize_emptyString() {
-    assertEquals("", StringUtils.capitalize(""));
-}
+    void testCapitalize_emptyString() {
+        assertEquals("", StringUtils.capitalize(""));
+    }
 
     @Test
     void testCapitalize_alreadyCapitalized() {
         assertEquals("Hello", StringUtils.capitalize("Hello"));
     }
-    
-    @Test
-    void testReverse_specialCharacters() {
-        assertEquals("!@#", StringUtils.reverse("#@!"));
-    }
-    
-    @Test
-    void testCountVowels_emptyString() {
-        assertEquals(0, StringUtils.countVowels(""));
-    }
 
     @Test
-    void testCountVowels_specialCharacters() {
-        assertEquals(0, StringUtils.countVowels("@#$%^"));
+    void testIsPalindrome_longString() {
+        String longString = "a".repeat(1000);
+        assertTrue(StringUtils.isPalindrome(longString));
     }
-
-    @Test
-void testIsPalindrome_longString() {
-    String longString = "a".repeat(1000);
-    assertEquals(StringUtils.isPalindrome(longString));
-}
 
     @Test
     void testReverse_longString() {
@@ -193,12 +193,9 @@ void testIsPalindrome_longString() {
     @ParameterizedTest
     @ValueSource(strings = {"¡Hola!", "你好", "😊", "❤️", "🚀"})
     void testReverse_specialCharacters(String input) {
-    String expected = new StringBuilder(input).reverse().toString();
-    assertEquals(expected, StringUtils.reverse(input));
-}
-
-
-
+        String expected = new StringBuilder(input).reverse().toString();
+        assertEquals(expected, StringUtils.reverse(input));
+    }
 }
 
 ```
