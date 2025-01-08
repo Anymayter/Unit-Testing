@@ -143,6 +143,32 @@ class StringUtilsTest {
     void testCapitalize_NullInput() {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.capitalize(null));
     }
+
+    @Test
+void testCapitalize_EmptyString() {
+    assertEquals("", StringUtils.capitalize(""));
+}
+
+    @Test
+    void testCapitalize_AlreadyCapitalized() {
+        assertEquals("Hello", StringUtils.capitalize("Hello"));
+    }
+    
+    @Test
+    void testReverse_SpecialCharacters() {
+        assertEquals("!@#", StringUtils.reverse("#@!"));
+    }
+    
+    @Test
+    void testCountVowels_EmptyString() {
+        assertEquals(0, StringUtils.countVowels(""));
+    }
+
+    @Test
+    void testCountVowels_SpecialCharacters() {
+        assertEquals(0, StringUtils.countVowels("@#$%^"));
+    }
+
 }
 
 ```
