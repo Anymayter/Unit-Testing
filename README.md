@@ -174,19 +174,32 @@ class StringUtilsTest {
     }
 
     @Test
-void testCapitalize_multipleWords() {
+    void testCapitalize_multipleWords() {
     assertEquals("Hello World", StringUtils.capitalize("hello world"));
 }
 
-@Test
-void testCapitalize_specialCharacters() {
-    assertEquals("@Hello", StringUtils.capitalize("@hello"));
-}
+    @Test
+    void testCapitalize_specialCharacters() {
+        assertEquals("@Hello", StringUtils.capitalize("@hello"));
+    }
+    
+    @Test
+    void testCapitalize_mixedCaseInput() {
+        assertEquals("Hello World", StringUtils.capitalize("HeLLo WoRLd"));
+    }
 
-@Test
-void testCapitalize_mixedCaseInput() {
-    assertEquals("Hello World", StringUtils.capitalize("HeLLo WoRLd"));
-}
+    @ParameterizedTest
+    @ValueSource(strings = {"MadAm", "A man a plan a canal Panama", "hello"})
+    void testIsPalindrome_caseInsensitive(String input) {
+        assertTrue(StringUtils.isPalindrome(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"hello world", "this is a test"})
+    void testCapitalize_multipleWords(String input) {
+        assertEquals(input.substring(0, 1).toUpperCase() + input.substring(1), StringUtils.capitalize(input));
+    }
+
 
 }
 
