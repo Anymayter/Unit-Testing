@@ -169,6 +169,20 @@ void testCapitalize_EmptyString() {
         assertEquals(0, StringUtils.countVowels("@#$%^"));
     }
 
+    @Test
+void testIsPalindrome_LongString() {
+    String longString = "a".repeat(1000);
+    assertTrue(StringUtils.isPalindrome(longString));
+}
+
+    @Test
+    void testReverse_LongString() {
+        String longString = "abc".repeat(1000);
+        String expected = "cba".repeat(1000);
+        assertEquals(expected, StringUtils.reverse(longString));
+    }
+
+
 }
 
 ```
